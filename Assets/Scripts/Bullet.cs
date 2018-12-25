@@ -11,12 +11,16 @@ public class Bullet : MonoBehaviour
 
     public GameObject bulletHitWallEffect;
 
+    public GameObject RewardNumberprefab;
+
     void OnCollisionEnter(Collision collision)
     {
         Debug.Log(collision.transform.name);
         if (collision.gameObject.tag == "Balloon")
         {
             AudioSource.PlayClipAtPoint(balloonPopSound, transform.position);
+
+            InitializeRewardNumber();
 
             GameObject effectIns = (GameObject)Instantiate(bulletHitBalloonEffect, transform.position, transform.rotation);
             Destroy(effectIns, 2f);
@@ -35,5 +39,13 @@ public class Bullet : MonoBehaviour
             Debug.Log(collision.transform.name + "Hit");
             Destroy(gameObject);
         }
+    }
+
+    void InitializeRewardNumber()
+    {
+        GameObject temp = (GameObject)Instantiate(RewardNumberprefab, transform.position, Quaternion.identity);
+        temp.SetActive(true);
+        temp.GetComponent<RewardNumberController>().SetText(Random.Range(0, 10).ToString());
+        Destroy(temp.gameObject, 4f);
     }
 }

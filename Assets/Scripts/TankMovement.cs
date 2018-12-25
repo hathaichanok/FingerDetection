@@ -1,17 +1,42 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class TankMovement : MonoBehaviour
 {
     public GameObject Bullet;
     public Transform Bullet_Emitter;
-    private float bulletSpeed = 1000f;
+    public float bulletSpeed = 2000f;
+    public int maxAmmo = 10;
+    private int currentAmmo;
+
+    public Text currentAmmoText;
+
+    GameObject AmmoPanel;
+
+    public bool GameMode = false;
 
     private float speed = 10f;
 
     public AudioClip shootSound;
 
-    void Update () {
+    void Start()
+    {
+        AmmoPanel = GameObject.FindGameObjectWithTag("AmmoPanel");
+        currentAmmo = maxAmmo;
+    }
+
+    void Update()
+    {
+        if (GameMode == true)
+        {
+            AmmoPanel.SetActive(true);
+            currentAmmoText.text = currentAmmo.ToString();
+        }
+        else
+        {
+            AmmoPanel.SetActive(false);
+        }
 
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
@@ -39,14 +64,31 @@ public class TankMovement : MonoBehaviour
 
         if (Input.GetKeyDown("space"))
         {
-            Shoot();
+            if (GameMode == false)
+            {
+                Shoot();
+            }
+            else
+            {
+                if (currentAmmo > 0)
+                {
+                    currentAmmo--;
+                    Shoot();
+                }
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            GameMode = !GameMode;
+            currentAmmo = maxAmmo;
         }
     }
 
     void Shoot()
     {
         AudioSource source = GetComponent<AudioSource>();
-        source.PlayOneShot(shootSound,1f);
+        source.PlayOneShot(shootSound, 1f);
 
         GameObject tempBullet = Instantiate(Bullet, Bullet_Emitter.position, Bullet_Emitter.rotation) as GameObject;
 
