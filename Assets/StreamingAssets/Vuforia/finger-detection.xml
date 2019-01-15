@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="09184203676c2f543e034c96a0c9f35b53540" size="5.000000 3.332223" />
+    <ImageTarget name="stone_pebbles_20120709_1123773533" size="5.000000 3.510204" />
+    <ImageTarget name="pasted-image-600x600" size="5.000000 5.000000" />
+    <ImageTarget name="tarmac" size="5.000000 3.500000" />
+    <ImageTarget name="example_5-star_grayscale" size="5.000000 3.500000" />
+    <ImageTarget name="marclafr_ar-project" size="15.000000 15.000000" />
+    <ImageTarget name="15130053698241346" size="15.000000 15.000000" />
+    <ImageTarget name="autumn-bg-1230494" size="15.000000 9.992308" />
+    <ImageTarget name="800px_COLOURBOX4648324" size="15.000000 15.000000" />
+    <ImageTarget name="BgJhAsIIgAAt_Le" size="15.000000 15.000000" />
+    <ImageTarget name="3733_autumn_leaves" size="15.000000 11.250000" />
+    <ImageTarget name="tttt" size="15.000000 9.992308" />
+  </Tracking>
+</QCARConfig>
